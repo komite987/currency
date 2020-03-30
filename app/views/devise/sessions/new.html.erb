@@ -1,0 +1,46 @@
+<div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+  <div class="wrapper wrapper--w790">
+    <div class="card card-5">
+      <div class="card-heading">
+        <h2 class="title">LOGIN</h2>
+      </div>
+      <div class="card-body">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-row">
+          <div class="name">Email</div>
+          <div class="value">
+            <div class="input-group">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input--style-5", placeholder:"Enter Email" %>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="name">Password</div>
+          <div class="value">
+            <div class="input-group">
+              <%= f.password_field :password, autocomplete: "current-password",class:"input--style-5", placeholder:"Enter Password" %>
+            </div>
+          </div>
+        </div>
+        <% if devise_mapping.rememberable? %>
+
+          <div class="form-row p-t-20">
+            <label class="label label--block">Remember Me</label>
+            <div class="p-t-15">
+              <label class="radio-container m-r-55">Yes
+                <%= f.check_box :remember_me %>
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+          <div>
+            <button class="btn btn--radius-2 btn--red" type="submit">Log in</button>
+          </div>
+          <%= render "devise/shared/links" %>
+
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>

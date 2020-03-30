@@ -1,0 +1,48 @@
+<div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+
+  <div class="wrapper wrapper--w790">
+
+    <div class="card card-5">
+      <div class="card-heading">
+        <h2 class="title">LOGIN</h2>
+      </div>
+
+      <div class="card-body">
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <div class="form-row">
+          <div class="name">Email</div>
+          <div class="value">
+            <div class="input-group">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input--style-5", placeholder:"Enter Email" %>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="name">Password</div>
+          <% if @minimum_password_length %>
+          <% end %>
+          <div class="value">
+            <div class="input-group">
+              <%= f.password_field :password, autocomplete: "new-password",class:"input--style-5", placeholder:"Choose Password, at least 6 characters" %>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="name">Password Confirmation</div>
+          <div class="value">
+            <div class="input-group">
+              <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"input--style-5", placeholder:"Confirm Password" %>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button class="btn btn--radius-2 btn--red" type="submit">Sign up</button>
+        </div>
+        <%= render "devise/shared/links" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>

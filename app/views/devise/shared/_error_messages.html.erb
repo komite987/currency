@@ -1,0 +1,11 @@
+<% if resource.errors.any? %>
+<div class="card border-danger mb-3 col-sm-6 offset-3 text-center" >
+  <div  class= "card-text text-danger">
+    <ul class="errors">
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>

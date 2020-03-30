@@ -1,0 +1,17 @@
+
+<% if notice || alert %>
+<br>
+  <div class="col-10 offset-1 info">
+    <% if alert %>
+      <div class='alert alert-danger'>
+        <a href="#" class="close" data-dismiss="alert">&#215;</a>
+        <div> <%= alert %></div>
+        </div>
+    <% else %>
+    <div class='alert alert-success'>
+      <a href="#" class="close" data-dismiss="alert">&#215;</a>
+      <div> <%= notice %></div>
+      </div>
+      <% end %>
+  </div>
+<% end %>

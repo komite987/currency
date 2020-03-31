@@ -17,3 +17,7 @@ require("packs/global.js")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+$(document).on('turbolinks:load', function(){
+  $('.info').fadeOut(8000, "swing")
+})

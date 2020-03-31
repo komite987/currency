@@ -1,5 +1,5 @@
 
-<% if notice || alert %>
+<% if notice || alert || flash %>
 <br>
   <div class="col-10 offset-1 info">
     <% if alert %>
@@ -7,11 +7,19 @@
         <a href="#" class="close" data-dismiss="alert">&#215;</a>
         <div> <%= alert %></div>
         </div>
-    <% else %>
+    <% elsif notice %>
     <div class='alert alert-success'>
       <a href="#" class="close" data-dismiss="alert">&#215;</a>
       <div> <%= notice %></div>
       </div>
+      <% else %>
+      <% flash.each do |name,msg| %>
+        <div class='alert alert-<%= name %>'>
+          <a href="#" class="close" data-dismiss="alert">&#215;</a>
+          <div> <%= msg %></div>
+          </div>
+          <% end %>
+
       <% end %>
   </div>
 <% end %>

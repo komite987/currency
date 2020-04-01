@@ -1,17 +1,14 @@
 class CoinsController < ApplicationController
 
   def search
-    if params[:currency].present?
-      @coin = Coin.new_coin(params[:currency])
-        if @coin
-          render 'users/portfolio'
-        else
-          flash[:danger] = "You Entered an inncorrect code"
-          redirect_to portfolio_path
-        end
+    if params[:currency].blank?
+      flash.now[:danger] = "You Entered an empty string"
     else
-      flash[:danger] = "You Entered an empty string"
-      redirect_to portfolio_path
+      @coin = Coin.new_coin(params[:currency])
+      flash.now[:danger] = "You Entered an inncorrect code" if !@coin
     end
+      respond_to do |format|
+        format.js  { render partial: 'users/result' }
+      end
   end
 end

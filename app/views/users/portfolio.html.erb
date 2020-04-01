@@ -4,11 +4,10 @@
 <h3>Search for currency</h3>
 <br>
 <div id="currency-lookup">
-  <%= form_tag search_coins_path, method: :get, id:"currency-lookup-form" do %>
+  <%= form_tag search_coins_path, remote: true, method: :get, id:"currency-lookup-form" do %>
   <div class="form-group row col-md-12 no-padding text-center">
     <div class="col-md-9">
-      <%= text_field_tag :currency, params[:currency], placeholder: "Enter currency code",
-                                   autofocus: true, class: "form-control form-control-lg search-box input-lg"%>
+      <%= text_field_tag :currency, params[:currency], placeholder: "Enter currency code", autofocus: true, class: "form-control form-control-lg search-box input-lg"%>
     </div>
     <div class="col-md-3">
       <%= button_tag(type: :submit, class: "btn-lg btn-success") do %>
@@ -19,22 +18,6 @@
 </div>
 <% end %>
 </div>
-<% if @coin %>
-<div class="card bg-light mb-3 col-md-9" style="max-width: 50em;">
-<div class="card-body">
-  <p class="card-text">
-    <strong>Code:
-    </strong>
-    <%= @coin.code %>
-    <strong>
-      Name:
-    </strong>
-    <%= @coin.name %>
-    <strong>
-      Symbol:
-    </strong>
-    <%= @coin.symbol %>
-  </p>
+<div id="results">
+<%= render 'result' %>
 </div>
-</div>
-<% end %>

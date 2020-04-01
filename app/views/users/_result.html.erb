@@ -1,0 +1,14 @@
+<div class="block no-padding">
+  <%= render 'layouts/info'%>
+</div>
+  <% if @coin %>
+  <div class="card bg-light mb-3 col-md-9" style="max-width: 50em">
+    <div class="card-body">
+      <p class="card-text">
+        <strong>Code: </strong><%= @coin.code %>
+        <strong>Name: </strong><%= @coin.name %>
+        <strong>Symbol: </strong><%= @coin.symbol %>
+      </p>
+    </div>
+  </div>
+  <% end %>

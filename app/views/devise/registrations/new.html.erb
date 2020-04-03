@@ -4,25 +4,44 @@
 
     <div class="card card-5">
       <div class="card-heading">
-        <h2 class="title">LOGIN</h2>
+        <h2 class="title">SIGN UP</h2>
       </div>
 
       <div class="card-body">
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <div class="row no-padding">
+        <div class="form-row col-6">
+          <div class="name">First Name</div>
+          <div class="value">
+            <div class="input-group">
+              <%= f.text_field :first_name, autofocus: true, class:"input--style-5", placeholder:"Your name" %>
+            </div>
+          </div>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+
+        <div class="form-row col-6">
+          <div class="name text-center">Last name</div>
+          <div class="value">
+            <div class="input-group">
+              <%= f.text_field :last_name, class:"input--style-5", placeholder:"Your last name" %>
+            </div>
+          </div>
+        </div>
+        </div>
         <div class="form-row">
           <div class="name">Email</div>
           <div class="value">
             <div class="input-group">
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input--style-5", placeholder:"Enter Email" %>
+              <%= f.email_field :email, autocomplete: "email", class:"input--style-5", placeholder:"Enter Email" %>
             </div>
           </div>
         </div>
         <div class="form-row">
           <div class="name">Password</div>
-          <% if @minimum_password_length %>
-          <% end %>
+          <% if @minimum_password_length %><% end %>
           <div class="value">
             <div class="input-group">
               <%= f.password_field :password, autocomplete: "new-password",class:"input--style-5", placeholder:"Choose Password, at least 6 characters" %>

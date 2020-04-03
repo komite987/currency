@@ -1,6 +1,8 @@
+<% if params[:action] == 'search' %>
 <div class="block no-padding">
   <%= render 'layouts/info'%>
 </div>
+<% end %>
   <% if @coin %>
   <div class="card bg-light mb-3 col-md-9" style="max-width: 50em">
     <div class="card-body">
@@ -8,6 +10,20 @@
         <strong>Code: </strong><%= @coin.code %>
         <strong>Name: </strong><%= @coin.name %>
         <strong>Symbol: </strong><%= @coin.symbol %>
+        <% if current_user.can_add(@coin.code) %>
+        <strong><%= link_to 'Add Coin', user_coins_path(user: current_user, coin_code: @coin.code),
+                                class: "badge badge-pill badge-success", method: :post %></strong>
+        <% else %>
+        <span class="badge badge-secondary">
+          Coin cannot be added because you have already added
+          <% if !current_user.under_limit %>
+            5 coins
+          <% end %>
+          <% if current_user.coin_already_add(@coin.code) %>
+            it
+          <% end %>
+        </span>
+      <% end %>
       </p>
     </div>
   </div>

@@ -1,4 +1,10 @@
 class Coin < ApplicationRecord
+  has_many :user_coins
+  has_many :users, through: :user_coins
+
+  def self.find_by_code(code)
+    where(code: code).first
+  end
 
   def self.new_coin(code)
     begin

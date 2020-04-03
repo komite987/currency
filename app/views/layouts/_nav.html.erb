@@ -1,12 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Currency Info</a>
+  <%= link_to 'Currency Info', root_path, class:"navbar-brand"%>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <% if current_user %>
+
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <%= link_to 'My Portfolio', portfolio_path, class:"nav-item nav-link"%>
-      <a class="nav-item nav-link" href="#">Features</a>
-    </div>
-  </div>
+      <div class="navbar-nav">
+        <%= link_to 'My Portfolio', portfolio_path, class:"nav-item nav-link"%>
+        <%= link_to 'Edit profile', edit_registration_path(current_user), class:"nav-item nav-link"%>
+        <%= link_to 'My Friends', friends_path, class:"nav-item nav-link"%>
+
+      </div>
+  <li class="nav-item nav-link right"><i class="fa fa-user"></i> <%= current_user.full_name %></li>
+  <%= link_to 'Log out', destroy_user_session_path, method: :delete, class:"btn-sm btn-danger right"%>
+
+</div>
+<% end %>
+
 </nav>
